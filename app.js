@@ -48,9 +48,20 @@ async function hydrateContent() {
     const heroData = await DataStore.getHero();
     const heroTitle = document.getElementById('heroTitle');
     const heroSubtitle = document.getElementById('heroSubtitle');
-    if (heroTitle && heroData && heroData.title) heroTitle.innerHTML = heroData.title;
-    if (heroSubtitle && heroData && heroData.subtitle) heroSubtitle.innerHTML = heroData.subtitle;
+    if (heroTitle) {
+      if (heroData && heroData.title) heroTitle.innerHTML = heroData.title;
+      heroTitle.style.opacity = '1';
+    }
+    if (heroSubtitle) {
+      if (heroData && heroData.subtitle) heroSubtitle.innerHTML = heroData.subtitle;
+      heroSubtitle.style.opacity = '1';
+    }
   } catch (e) {
+    // Fallback: show default text even if Firebase fails
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    if (heroTitle) heroTitle.style.opacity = '1';
+    if (heroSubtitle) heroSubtitle.style.opacity = '1';
     console.warn("Hero hydration error:", e);
   }
 
