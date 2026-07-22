@@ -396,6 +396,24 @@ function initModalSystem() {
 /* --------------------------------------------------------------------------
    6. Contact Form Handling & Validation
    -------------------------------------------------------------------------- */
+window.openContactModal = function openContactModal() {
+  const contactModal = document.getElementById('contactModal');
+  if (contactModal) {
+    contactModal.classList.add('active');
+    contactModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeContactModal = function closeContactModal() {
+  const contactModal = document.getElementById('contactModal');
+  if (contactModal) {
+    contactModal.classList.remove('active');
+    contactModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+};
+
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
@@ -417,6 +435,43 @@ function initContactForm() {
       submitBtn.disabled = !privacyConsent.checked;
     });
   }
+
+  // 1. Bind Modal Triggers
+  const contactTrigger = document.getElementById('contactTrigger');
+  contactTrigger?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.openContactModal();
+  });
+
+  // Bind Menu links (href="#contact" or data-tab="contact")
+  document.querySelectorAll('a[href="#contact"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.openContactModal();
+    });
+  });
+  
+  document.querySelectorAll('[data-tab="contact"]').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.openContactModal();
+    });
+  });
+
+  // 2. Bind Close Triggers
+  const closeBtn = document.getElementById('contactModalCloseBtn');
+  const overlay = document.getElementById('contactModal');
+
+  closeBtn?.addEventListener('click', window.closeContactModal);
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) window.closeContactModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay?.classList.contains('active')) {
+      window.closeContactModal();
+    }
+  });
 
   // Real-time Input Listeners
   [userName, publisherName, userEmail, proposalDetail].forEach(input => {
@@ -483,27 +538,39 @@ function initContactForm() {
       return;
     }
 
-    // Success State Modal
+    // Close contact modal
+    window.closeContactModal();
+
+    // Success State Modal (Uses the main overlay)
     const body = document.getElementById('modalBody');
-    body.innerHTML = `
-      <div class="contact-success-modal" style="text-align: center; padding: 1.5rem 0;">
-        <div style="width: 60px; height: 60px; border-radius: 50%; background-color: rgba(44, 94, 78, 0.1); color: var(--color-primary); display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem;">
-          <i data-lucide="check-circle"></i>
+    if (body) {
+      body.innerHTML = `
+        <div class="contact-success-modal" style="text-align: center; padding: 1.5rem 0;">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background-color: rgba(44, 94, 78, 0.1); color: var(--color-primary); display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem;">
+            <i data-lucide="check-circle"></i>
+          </div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 0.6rem;">협업 제안 접수 완료!</h3>
+          <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+            소중한 제안 감사드립니다.<br>
+            작성해 주신 이메일(<strong>${userEmail.value.trim()}</strong>)로 24시간 이내에 세부 진행 절차 및 포트폴리오를 안내해 드리겠습니다.
+          </p>
+          <button class="btn btn-primary" onclick="window.closeModal();">확인</button>
         </div>
-        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 0.6rem;">협업 제안 접수 완료!</h3>
-        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-          소중한 제안 감사드립니다.<br>
-          작성해 주신 이메일(<strong>${userEmail.value.trim()}</strong>)로 24시간 이내에 세부 진행 절차 및 포트폴리오를 안내해 드리겠습니다.
-        </p>
-        <button class="btn btn-primary" onclick="window.closeModal();">확인</button>
-      </div>
-    `;
+      `;
+    }
     
-    document.getElementById('modalOverlay').classList.add('active');
-    document.getElementById('modalOverlay').setAttribute('aria-hidden', 'false');
+    const mainOverlay = document.getElementById('modalOverlay');
+    if (mainOverlay) {
+      mainOverlay.classList.add('active');
+      mainOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
     showToast(`${publisherName.value.trim()} ${userName.value.trim()} 담당자님, 협업 문의가 접수되었습니다!`, 'success');
     refreshIcons();
     form.reset();
+    if (privacyConsent) privacyConsent.checked = true;
+    if (submitBtn) submitBtn.disabled = false;
   });
 }
 

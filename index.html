@@ -473,89 +473,15 @@
       </div>
     </section>
 
-    <!-- Section 5: Contact (Collaboration Form) -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="contact-card-box">
-          <div class="contact-header">
-            <span class="section-tag">COLLABORATION</span>
-            <h2 class="section-title">도서 리뷰 및 협업 제안하기</h2>
-            <p class="section-desc">
-              출판사 마케터 및 편집자분들의 제안을 기다립니다. 아래 내용을 작성해 주시면 24시간 이내에 친절히 답변드리겠습니다.
-            </p>
-          </div>
-
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="userName">담당자 성함 <span class="required" aria-hidden="true">*</span></label>
-                <div class="input-with-icon">
-                  <i data-lucide="user"></i>
-                  <input type="text" id="userName" name="userName" autocomplete="name" placeholder="예: 김민지 에디터" required aria-required="true">
-                </div>
-                <span class="input-error-msg" id="userNameError"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="publisherName">출판사 / 브랜드명 <span class="required" aria-hidden="true">*</span></label>
-                <div class="input-with-icon">
-                  <i data-lucide="building"></i>
-                  <input type="text" id="publisherName" name="publisherName" autocomplete="organization" placeholder="예: 민음사 마케팅팀" required aria-required="true">
-                </div>
-                <span class="input-error-msg" id="publisherNameError"></span>
-              </div>
-            </div>
-
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="userEmail">회신받으실 이메일 <span class="required" aria-hidden="true">*</span></label>
-                <div class="input-with-icon">
-                  <i data-lucide="mail"></i>
-                  <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="example@publisher.com" required aria-required="true">
-                </div>
-                <span class="input-error-msg" id="userEmailError"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="targetDate">희망 발행 일자</label>
-                <div class="input-with-icon">
-                  <i data-lucide="calendar"></i>
-                  <input type="date" id="targetDate" name="targetDate">
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="proposalDetail">도서명 및 제안 내용 <span class="required" aria-hidden="true">*</span></label>
-              <textarea id="proposalDetail" name="proposalDetail" rows="4" placeholder="리뷰 희망 도서명, 가늠하시는 일정, 요청하실 서평 컨셉이나 강조하고 싶으신 포인트를 편하게 작성해 주세요." required aria-required="true"></textarea>
-              <span class="input-error-msg" id="proposalDetailError"></span>
-            </div>
-
-            <div class="form-options">
-              <label class="checkbox-container">
-                <input type="checkbox" id="privacyConsent" required checked aria-required="true">
-                <span class="checkmark"></span>
-                <span class="checkbox-text">개인정보 수집 및 협업 안내 이메일 수신 동의</span>
-              </label>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full-span touch-target" id="submitBtn">
-              <span>리뷰 및 협업 문의하기</span>
-              <i data-lucide="send"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- Sticky Floating CTA (Bottom Right, safely above mobile bottom bar) -->
   <aside class="floating-cta" id="floatingCta">
-    <a href="#contact" class="floating-btn" aria-label="협업 제안 빠른 상담 이동">
+    <button class="floating-btn" id="contactTrigger" aria-label="협업 제안 문의창 열기">
       <i data-lucide="message-square"></i>
       <span class="floating-text">협업 문의</span>
       <span class="pulse-dot" aria-hidden="true"></span>
-    </a>
+    </button>
   </aside>
 
   <!-- Mobile Bottom Navigation Bar (Fixed at screen bottom on Mobile) -->
@@ -591,6 +517,78 @@
       <div class="modal-body" id="modalBody">
         <!-- Content injected dynamically via app.js -->
       </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal (Collaboration Request Form in Modal Popup) -->
+  <div class="modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" style="max-width: 600px;">
+      <button class="modal-close-btn" id="contactModalCloseBtn" aria-label="닫기">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="contact-header" style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="section-tag" style="font-size: 0.8rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.1em; text-transform: uppercase;">COLLABORATION</span>
+        <h2 id="contactModalTitle" style="font-family: var(--font-serif); font-size: 1.5rem; margin-top: 0.3rem;">도서 리뷰 및 협업 제안하기</h2>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group">
+            <label for="userName">담당자 성함 <span class="required" aria-hidden="true">*</span></label>
+            <div class="input-with-icon">
+              <i data-lucide="user"></i>
+              <input type="text" id="userName" name="userName" autocomplete="name" placeholder="예: 김민지 에디터" required aria-required="true">
+            </div>
+            <span class="input-error-msg" id="userNameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="publisherName">출판사 / 브랜드명 <span class="required" aria-hidden="true">*</span></label>
+            <div class="input-with-icon">
+              <i data-lucide="building"></i>
+              <input type="text" id="publisherName" name="publisherName" autocomplete="organization" placeholder="예: 민음사 마케팅팀" required aria-required="true">
+            </div>
+            <span class="input-error-msg" id="publisherNameError"></span>
+          </div>
+        </div>
+
+        <div class="form-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group">
+            <label for="userEmail">회신받으실 이메일 <span class="required" aria-hidden="true">*</span></label>
+            <div class="input-with-icon">
+              <i data-lucide="mail"></i>
+              <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="example@publisher.com" required aria-required="true">
+            </div>
+            <span class="input-error-msg" id="userEmailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="targetDate">희망 발행 일자</label>
+            <div class="input-with-icon">
+              <i data-lucide="calendar"></i>
+              <input type="date" id="targetDate" name="targetDate">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="proposalDetail">도서명 및 제안 내용 <span class="required" aria-hidden="true">*</span></label>
+          <textarea id="proposalDetail" name="proposalDetail" rows="4" placeholder="리뷰 희망 도서명, 가늠하시는 일정, 요청하실 서평 컨셉이나 강조하고 싶으신 포인트를 편하게 작성해 주세요." required aria-required="true"></textarea>
+          <span class="input-error-msg" id="proposalDetailError"></span>
+        </div>
+
+        <div class="form-options" style="margin-bottom: 1.5rem;">
+          <label class="checkbox-container">
+            <input type="checkbox" id="privacyConsent" required checked aria-required="true">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">개인정보 수집 및 협업 안내 이메일 수신 동의</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full-span touch-target" id="submitBtn">
+          <span>리뷰 및 협업 문의하기</span>
+          <i data-lucide="send"></i>
+        </button>
+      </form>
     </div>
   </div>
 
