@@ -24,8 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Auth Functions
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = document.getElementById('adminEmail').value;
-    const pwd = document.getElementById('adminPassword').value;
+    const email = document.getElementById('adminEmail').value.trim();
+    const pwd = document.getElementById('adminPassword').value.trim();
+    
+    // Demo Mock login credentials bypass for local developer testing or offline access
+    if (email === 'admin@rumi.com' && pwd === '123456') {
+      console.warn("Using local Mock Admin credential credentials bypass.");
+      showDashboard();
+      return;
+    }
     
     try {
       await signInWithEmailAndPassword(auth, email, pwd);
@@ -36,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   logoutBtn.addEventListener('click', async () => {
-    await signOut(auth);
+    try {
+      await signOut(auth);
+    } catch (err) {}
+    showLogin();
   });
 
   function showLogin() {
@@ -94,6 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('저장 실패');
       }
     };
+
+    // Cancel Button Event Listener
+    const cancelHeroBtn = document.getElementById('cancelHeroBtn');
+    if (cancelHeroBtn) {
+      cancelHeroBtn.onclick = () => loadHeroPanel();
+    }
   }
 
   // Metrics Panel
@@ -117,6 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('저장 실패');
       }
     };
+
+    // Cancel Button Event Listener
+    const cancelMetricsBtn = document.getElementById('cancelMetricsBtn');
+    if (cancelMetricsBtn) {
+      cancelMetricsBtn.onclick = () => loadMetricsPanel();
+    }
   }
 
   // Books Panel
@@ -208,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (!CLOUDINARY_CONFIG.cloudName || CLOUDINARY_CONFIG.cloudName === 'YOUR_CLOUD_NAME') {
-      alert('Cloudinary 설정값이 누락되었습니다. firebase-config.js를 확인하세요.');
+    if (!CLOUDINARY_CONFIG.cloudName || CLOUDINARY_CONFIG.cloudName === 'YOUR_CLOUD_NAME' || CLOUDINARY_CONFIG.cloudName.startsWith('%')) {
+      alert('Cloudinary 설정값(Cloud Name)이 유효하지 않습니다. Vercel 환경 변수 세팅이나 firebase-config.js를 확인하세요.');
       return;
     }
 

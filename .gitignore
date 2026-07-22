@@ -10,3 +10,6 @@ build/
 .gemini/
 .agents/
 *.log
+
+.vercel
+.env*

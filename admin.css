@@ -188,10 +188,24 @@ body.admin-body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background-color: var(--bg-primary);
+  flex-wrap: wrap;
+}
+
+.book-info-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.book-info-row div {
+  min-width: 0;
+  word-break: break-all;
 }
 
 .book-list-info strong {
