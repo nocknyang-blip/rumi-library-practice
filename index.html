@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>루미의 서재 | 네이버 도서 인플루언서 & AI 시각적 도서 큐레이션</title>
+  <meta name="description" content="책 속 상황을 직접 겪어보는 루미(Rumi)의 서재. AI 이미지 기반의 시각적 스토리텔링 도서 리뷰 및 출판사 마케팅 협업 포트폴리오.">
+  <meta name="keywords" content="도서 인플루언서, 네이버 인플루언서, AI 서평, 책 리뷰, 출판사 협업, 시각적 스토리텔링, 루미의 서재">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="루미의 서재 | AI 시각적 도서 큐레이션">
+  <meta property="og:description" content="텍스트 위주의 지루한 서평은 그만! 책 속 상황을 재연하는 캐릭터 AI 비주얼 서평.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+
+  <!-- Schema.org Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "루미 (Rumi)",
+    "jobTitle": "Naver Book Influencer & AI Visual Content Creator",
+    "url": "https://blog.naver.com",
+    "sameAs": [
+      "https://blog.naver.com",
+      "https://instagram.com"
+    ],
+    "knowsAbout": ["도서 리뷰", "AI 시각적 스토리텔링", "출판사 마케팅", "네이버 도서 인플루언서"]
+  }
+  </script>
+
+  <!-- Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Maru+Buri:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">본문 바로가기</a>
+
+  <!-- Top Navigation (Desktop & Tablet) -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="루미의 서재 홈으로 이동">
+        <span class="logo-icon"><i data-lucide="book-open"></i></span>
+        <span class="logo-text">루미의 서재 <span class="logo-badge">Naver Book Influencer</span></span>
+      </a>
+      <nav class="desktop-menu" aria-label="메인 메뉴">
+        <a href="#hero" class="menu-link active">소개</a>
+        <a href="#curation" class="menu-link">도서 큐레이션</a>
+        <a href="#universe" class="menu-link">캐릭터 유니버스</a>
+        <a href="#process" class="menu-link">협업 프로세스</a>
+        <a href="#contact" class="menu-link">문의하기</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggleBtn" aria-label="다크/라이트 모드 전환" title="테마 변경">
+          <i data-lucide="moon" id="themeIcon"></i>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm desktop-only-btn">
+          <span>협업 제안</span>
+          <i data-lucide="send"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Section 1: Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+      </div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge-group">
+            <span class="pill-badge accent-pill">
+              <i data-lucide="sparkles"></i> AI 시각적 도서 큐레이터
+            </span>
+            <span class="pill-badge subtitle-pill">네이버 상위 1% 도서 인플루언서</span>
+          </div>
+          <h1 class="hero-title" id="heroTitle">
+            책 속 상황을 직접 겪어보는<br>
+            <span class="text-highlight">루미(Rumi)의 서재</span>입니다.
+          </h1>
+          <p class="hero-subtitle" id="heroSubtitle">
+            텍스트 위주의 지루한 서평을 넘어, 고유 캐릭터 '루미'가 책 속 명장면을 재연하는 <strong>AI visual 스토리텔링</strong>으로 독자의 몰입을 극대화합니다.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn btn-primary btn-lg touch-target">
+              <span>협업 제안하기</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="#curation" class="btn btn-secondary btn-lg touch-target">
+              <span>큐레이션 둘러보기</span>
+              <i data-lucide="compass"></i>
+            </a>
+          </div>
+
+          <!-- Trust Badges & Metrics -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-num" data-target="350" id="metric-reviews">350+</span>
+              <span class="metric-label">누적 리뷰 도서</span>
+            </div>
+            <div class="metric-divider" aria-hidden="true"></div>
+            <div class="metric-item">
+              <span class="metric-num" data-target="150" id="metric-followers">150K+</span>
+              <span class="metric-label">월간 블로그 도달</span>
+            </div>
+            <div class="metric-divider" aria-hidden="true"></div>
+            <div class="metric-item">
+              <span class="metric-num" data-target="94" id="metric-collaborations">94%</span>
+              <span class="metric-label">출판사 재협업률</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="character-card-frame">
+            <img src="./assets/hero_character.png" alt="책을 읽고 있는 웹툰 캐릭터 루미 일러스트" class="hero-img" loading="eager">
+            <div class="character-card-badge">
+              <div class="avatar-ring">
+                <span class="status-dot"></span>
+              </div>
+              <div class="badge-text">
+                <strong>Character Rumi</strong>
+                <span>"오늘도 책 속 세계로 출발해요!"</span>
+              </div>
+            </div>
+            <div class="floating-tag tag-1">#AI_비주얼서평</div>
+            <div class="floating-tag tag-2">#숏폼_스토리텔링</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Pick & Curation (Book Recommendations) -->
+    <section class="curation-section" id="curation">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">PICK & CURATION</span>
+          <h2 class="section-title">루미's 픽 & 감성 도서 큐레이션</h2>
+          <p class="section-desc">감정과 상황에 따른 맞춤형 도서 추천! 카드를 터치하여 AI 스토리 리뷰를 확인하세요.</p>
+        </div>
+
+        <!-- Tag Filters & View Toggle Bar -->
+        <div class="curation-controls-bar">
+          <div class="mood-tags-wrapper" id="moodTags" role="tablist" aria-label="감정별 도서 필터">
+            <button class="mood-pill active" data-filter="all" role="tab" aria-selected="true">#전체보기</button>
+            <button class="mood-pill" data-filter="comfort" role="tab" aria-selected="false">#위로가_필요할_때</button>
+            <button class="mood-pill" data-filter="commute" role="tab" aria-selected="false">#출근길_추천</button>
+            <button class="mood-pill" data-filter="growth" role="tab" aria-selected="false">#지적성장을_위해</button>
+            <button class="mood-pill" data-filter="weekend" role="tab" aria-selected="false">#주말_몰입독서</button>
+          </div>
+
+          <div class="view-toggle-group">
+            <span class="toggle-label">뷰 선택</span>
+            <div class="toggle-buttons">
+              <button class="view-btn active" id="gridToggleBtn" aria-label="그리드 보기" title="그리드 보기">
+                <i data-lucide="grid"></i>
+              </button>
+              <button class="view-btn" id="listToggleBtn" aria-label="리스트 보기" title="리스트 보기">
+                <i data-lucide="list"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen reader live feedback -->
+        <div id="filterLiveStatus" class="sr-only" aria-live="polite"></div>
+
+        <!-- Carousel / Swipe Container for Mobile & Responsive Grid -->
+        <div class="carousel-container grid-view" id="curationContainer">
+          <div class="swipe-hint mobile-only" aria-hidden="true">
+            <i data-lucide="move-horizontal"></i> 좌우로 스와이프하여 탐색하세요
+          </div>
+
+          <div class="cards-track" id="cardsTrack">
+            <!-- Book Card 1 -->
+            <article class="book-card" data-category="comfort" data-book-id="1">
+              <div class="book-cover-wrap">
+                <img src="./assets/book_cover1.png" alt="달빛 세탁소 도서 표지" class="book-cover-img" loading="lazy">
+                <span class="genre-badge">소설 / 힐링</span>
+                <button class="quick-view-btn" data-modal="1" aria-label="달빛 세탁소 AI 비주얼 서평 크게보기">
+                  <i data-lucide="eye"></i> AI 비주얼 서평
+                </button>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="author">김지은 저 · 달빛출판사</span>
+                  <div class="rating"><i data-lucide="star"></i> 4.9</div>
+                </div>
+                <h3 class="book-title">달빛 세탁소</h3>
+                <blockquote class="character-quote">
+                  "지친 마음에 묻은 얼룩을 말끔히 지워주는 밤의 이야기. 루미도 세탁소 벤치에서 눈물을 훔쳤어요."
+                </blockquote>
+                <div class="card-footer">
+                  <span class="hash-tag">#위로가_필요할_때</span>
+                  <button class="detail-link" data-modal="1" aria-label="달빛 세탁소 상세보기">상세보기 <i data-lucide="chevron-right"></i></button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Book Card 2 -->
+            <article class="book-card" data-category="commute" data-book-id="2">
+              <div class="book-cover-wrap">
+                <img src="./assets/book_cover2.png" alt="초록빛 내일 도서 표지" class="book-cover-img" loading="lazy">
+                <span class="genre-badge">에세이 / 루틴</span>
+                <button class="quick-view-btn" data-modal="2" aria-label="초록빛 내일 AI 비주얼 서평 크게보기">
+                  <i data-lucide="eye"></i> AI 비주얼 서평
+                </button>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="author">이민준 저 · 그린북스</span>
+                  <div class="rating"><i data-lucide="star"></i> 4.8</div>
+                </div>
+                <h3 class="book-title">초록빛 내일</h3>
+                <blockquote class="character-quote">
+                  "복잡한 지하철 안에서도 나만의 아침 숲길을 만드는 10분 모닝 루틴."
+                </blockquote>
+                <div class="card-footer">
+                  <span class="hash-tag">#출근길_추천</span>
+                  <button class="detail-link" data-modal="2" aria-label="초록빛 내일 상세보기">상세보기 <i data-lucide="chevron-right"></i></button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Book Card 3 -->
+            <article class="book-card" data-category="weekend" data-book-id="3">
+              <div class="book-cover-wrap">
+                <img src="./assets/book_cover3.png" alt="별이 지는 밤의 비밀 도서 표지" class="book-cover-img" loading="lazy">
+                <span class="genre-badge">미스터리 / 판타지</span>
+                <button class="quick-view-btn" data-modal="3" aria-label="별이 지는 밤의 비밀 AI 비주얼 서평 크게보기">
+                  <i data-lucide="eye"></i> AI 비주얼 서평
+                </button>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="author">박해일 저 · 시계탑미디어</span>
+                  <div class="rating"><i data-lucide="star"></i> 5.0</div>
+                </div>
+                <h3 class="book-title">별이 지는 밤의 비밀</h3>
+                <blockquote class="character-quote">
+                  "시계탑 아래 숨겨진 거대 추리극! 밤새도록 페이지를 넘기느라 잠을 청할 수 없었습니다."
+                </blockquote>
+                <div class="card-footer">
+                  <span class="hash-tag">#주말_몰입독서</span>
+                  <button class="detail-link" data-modal="3" aria-label="별이 지는 밤의 비밀 상세보기">상세보기 <i data-lucide="chevron-right"></i></button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Book Card 4 -->
+            <article class="book-card" data-category="growth" data-book-id="4">
+              <div class="book-cover-wrap">
+                <img src="./assets/book_cover4.png" alt="AI 시대의 몰입 독서법 도서 표지" class="book-cover-img" loading="lazy">
+                <span class="genre-badge">자기계발 / 자기성장</span>
+                <button class="quick-view-btn" data-modal="4" aria-label="AI 시대의 몰입 독서법 AI 비주얼 서평 크게보기">
+                  <i data-lucide="eye"></i> AI 비주얼 서평
+                </button>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="author">최영호 저 · 미래미디어</span>
+                  <div class="rating"><i data-lucide="star"></i> 4.9</div>
+                </div>
+                <h3 class="book-title">AI 시대의 몰입 독서법</h3>
+                <blockquote class="character-quote">
+                  "정보의 홍수 속에서 내 생각의 지도를 구축하는 차세대 딥 리딩 전략!"
+                </blockquote>
+                <div class="card-footer">
+                  <span class="hash-tag">#지적성장을_위해</span>
+                  <button class="detail-link" data-modal="4" aria-label="AI 시대의 몰입 독서법 상세보기">상세보기 <i data-lucide="chevron-right"></i></button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-nav-buttons">
+            <button class="carousel-btn prev-btn" id="prevSlide" aria-label="이전 도서 보기">
+              <i data-lucide="chevron-left"></i>
+            </button>
+            <div class="carousel-dots" id="carouselDots" aria-label="슬라이드 위치"></div>
+            <button class="carousel-btn next-btn" id="nextSlide" aria-label="다음 도서 보기">
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Character Universe (Visual Storytelling Point) -->
+    <section class="universe-section" id="universe">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">VISUAL STORYTELLING</span>
+          <h2 class="section-title">루미 캐릭터 유니버스</h2>
+          <p class="section-desc">텍스트를 비주얼 씬으로 재구성하여 독자의 마음을 사로잡는 차별화된 서평 방식입니다.</p>
+        </div>
+
+        <!-- Concept Highlight Banner -->
+        <div class="concept-callout-banner">
+          <div class="callout-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div class="callout-text">
+            <strong>"글 중간중간, 책 속 상황을 재연한 고품질 AI 이미지를 배치하여 독자의 체류 시간과 몰입도를 3배 이상 극대화합니다."</strong>
+          </div>
+        </div>
+
+        <!-- Zig-zag Scene Showcase -->
+        <div class="showcase-grid">
+          <!-- Scene Item 1 -->
+          <div class="showcase-card">
+            <div class="showcase-img-wrap">
+              <img src="./assets/scene_laundry.png" alt="밤의 신비로운 세탁소 씬 재연 이미지" class="showcase-img" loading="lazy">
+              <div class="scene-badge"><i data-lucide="camera"></i> Scene #01. 밤의 세탁소</div>
+            </div>
+            <div class="showcase-content">
+              <span class="scene-category">감성 소설 씬 재연</span>
+              <h3 class="showcase-title">"마음의 얼룩을 씻어내는 야간 세탁소"</h3>
+              <p class="showcase-desc">
+                도서 《달빛 세탁소》의 127페이지, 주인공이 밤 11시 세탁소 유리창에 비친 자신의 모습을 바라보던 순간을 캐릭터 '루미'로 시각화한 리뷰 컷입니다.
+              </p>
+              <div class="showcase-features">
+                <span class="feature-chip"><i data-lucide="check"></i> 체류시간 240초 증대</span>
+                <span class="feature-chip"><i data-lucide="check"></i> 댓글 반응률 4.2배</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scene Item 2 -->
+          <div class="showcase-card reverse">
+            <div class="showcase-img-wrap">
+              <img src="./assets/scene_rainy.png" alt="비 내리는 거리 씬 재연 이미지" class="showcase-img" loading="lazy">
+              <div class="scene-badge"><i data-lucide="camera"></i> Scene #02. 비 오는데 도착한 편지</div>
+            </div>
+            <div class="showcase-content">
+              <span class="scene-category">서간체 에세이 씬 재연</span>
+              <h3 class="showcase-title">"비 오는 골목길, 노란 우산 아래 편지"</h3>
+              <p class="showcase-desc">
+                도서 《초록빛 내일》 속 잊고 지낸 순수를 찾아가는 여정을 빗속 묘사와 캐릭터 표정으로 완벽히 재구성하여 인스타그램 카드뉴스 및 네이버 메인 추천에 등재되었습니다.
+              </p>
+              <div class="showcase-features">
+                <span class="feature-chip"><i data-lucide="check"></i> 네이버 메인 노출</span>
+                <span class="feature-chip"><i data-lucide="check"></i> SNS 스크랩 1,200+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Work Process (For Publishers) -->
+    <section class="process-section" id="process">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">WORK PROCESS FOR PUBLISHERS</span>
+          <h2 class="section-title">출판사 마케팅 협업 프로세스</h2>
+          <p class="section-desc">신속하고 정확한 체계로 신간 도서의 매력을 최고의 비주얼 콘텐츠로 완성합니다.</p>
+        </div>
+
+        <!-- Stepper Timeline Grid -->
+        <div class="stepper-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-number">01</span>
+              <div class="step-icon-circle"><i data-lucide="package"></i></div>
+            </div>
+            <h3 class="step-title">도서 수령 & 컨셉 조율</h3>
+            <p class="step-desc">
+              신간 도서 수령 후 핵심 타겟 독자층과 도서의 주요 키워드 및 출판사 소통 채널을 조율합니다.
+            </p>
+            <div class="step-badges">
+              <span class="badge badge-accent">컨셉 맞춤 수립</span>
+              <span class="badge">당일 접수</span>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-number">02</span>
+              <div class="step-icon-circle"><i data-lucide="wand"></i></div>
+            </div>
+            <h3 class="step-title">캐릭터 상황 기획</h3>
+            <p class="step-desc">
+              도서 내 명장면/상황을 발췌하고 캐릭터 '루미'의 오리지널 AI 컷 씬 프롬프트를 디테일하게 기획합니다.
+            </p>
+            <div class="step-badges">
+              <span class="badge badge-accent">고해상도 AI 컷 제공</span>
+              <span class="badge">피드백 1회</span>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-number">03</span>
+              <div class="step-icon-circle"><i data-lucide="file-text"></i></div>
+            </div>
+            <h3 class="step-title">시각적 리뷰 제작</h3>
+            <p class="step-desc">
+              AI 비주얼 컷과 함께 가독성 높은 스토리텔링 서평 텍스트, 카드뉴스, 블로그 SEO 최적화 원고를 작성합니다.
+            </p>
+            <div class="step-badges">
+              <span class="badge badge-accent">SEO 키워드 반영</span>
+              <span class="badge">3일 내 완성</span>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-number">04</span>
+              <div class="step-icon-circle"><i data-lucide="share-2"></i></div>
+            </div>
+            <h3 class="step-title">통합 채널 동시 발행</h3>
+            <p class="step-desc">
+              네이버 공식 블로그(도서 인플루언서 탭) 및 인스타그램 숏폼 카드뉴스에 동시에 매끄럽게 발행됩니다.
+            </p>
+            <div class="step-badges">
+              <span class="badge badge-accent">블로그+인스타 동시 노출</span>
+              <span class="badge">성과 리포트</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publisher FAQ Accordion -->
+        <div class="faq-container">
+          <h3 class="faq-title"><i data-lucide="help-circle"></i> 출판사 마케터 자주 묻는 질문</h3>
+          <div class="accordion">
+            <details class="accordion-item">
+              <summary class="accordion-header">
+                <span>Q. 도서 수령 후 발행까지 평균 소요 시간은 얼마나 걸리나요?</span>
+                <i data-lucide="chevron-down"></i>
+              </summary>
+              <div class="accordion-body">
+                도서 수령일 기준 평균 3일 이내 초안을 송부드리며, 확정 후 지정하신 날짜와 시간에 맞춰 발행됩니다. 급한 신간 마케팅 일정의 경우 24시간 패스트트랙 조율도 가능합니다.
+              </div>
+            </details>
+
+            <details class="accordion-item">
+              <summary class="accordion-header">
+                <span>Q. 생성된 AI 이미지의 저작권 및 마케팅 2차 활용이 가능한가요?</span>
+                <i data-lucide="chevron-down"></i>
+              </summary>
+              <div class="accordion-body">
+                네! 루미의 서재에서 직접 생성한 비주얼 컷은 출판사의 상세페이지, SNS 홍보, 온/오프라인 카드뉴스 마케팅용으로 자유롭게 2차 활용이 가능하도록 원본 파일(PNG)을 함께 제공해 드립니다.
+              </div>
+            </details>
+
+            <details class="accordion-item">
+              <summary class="accordion-header">
+                <span>Q. 도서 분야(장르)에 제한이 있나요?</span>
+                <i data-lucide="chevron-down"></i>
+              </summary>
+              <div class="accordion-body">
+                소설, 에세이, 자기계발, 인문학, 실용서 등 대부분의 장르를 진행하고 있습니다. 책의 핵심 주제를 캐릭터 루미의 상황에 맞게 재해석하여 독자들에게 몰입감 있게 전달합니다.
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Contact (Collaboration Form) -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card-box">
+          <div class="contact-header">
+            <span class="section-tag">COLLABORATION</span>
+            <h2 class="section-title">도서 리뷰 및 협업 제안하기</h2>
+            <p class="section-desc">
+              출판사 마케터 및 편집자분들의 제안을 기다립니다. 아래 내용을 작성해 주시면 24시간 이내에 친절히 답변드리겠습니다.
+            </p>
+          </div>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="userName">담당자 성함 <span class="required" aria-hidden="true">*</span></label>
+                <div class="input-with-icon">
+                  <i data-lucide="user"></i>
+                  <input type="text" id="userName" name="userName" autocomplete="name" placeholder="예: 김민지 에디터" required aria-required="true">
+                </div>
+                <span class="input-error-msg" id="userNameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="publisherName">출판사 / 브랜드명 <span class="required" aria-hidden="true">*</span></label>
+                <div class="input-with-icon">
+                  <i data-lucide="building"></i>
+                  <input type="text" id="publisherName" name="publisherName" autocomplete="organization" placeholder="예: 민음사 마케팅팀" required aria-required="true">
+                </div>
+                <span class="input-error-msg" id="publisherNameError"></span>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="userEmail">회신받으실 이메일 <span class="required" aria-hidden="true">*</span></label>
+                <div class="input-with-icon">
+                  <i data-lucide="mail"></i>
+                  <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="example@publisher.com" required aria-required="true">
+                </div>
+                <span class="input-error-msg" id="userEmailError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="targetDate">희망 발행 일자</label>
+                <div class="input-with-icon">
+                  <i data-lucide="calendar"></i>
+                  <input type="date" id="targetDate" name="targetDate">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="proposalDetail">도서명 및 제안 내용 <span class="required" aria-hidden="true">*</span></label>
+              <textarea id="proposalDetail" name="proposalDetail" rows="4" placeholder="리뷰 희망 도서명, 가늠하시는 일정, 요청하실 서평 컨셉이나 강조하고 싶으신 포인트를 편하게 작성해 주세요." required aria-required="true"></textarea>
+              <span class="input-error-msg" id="proposalDetailError"></span>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="privacyConsent" required checked aria-required="true">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">개인정보 수집 및 협업 안내 이메일 수신 동의</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full-span touch-target" id="submitBtn">
+              <span>리뷰 및 협업 문의하기</span>
+              <i data-lucide="send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Floating CTA (Bottom Right, safely above mobile bottom bar) -->
+  <aside class="floating-cta" id="floatingCta">
+    <a href="#contact" class="floating-btn" aria-label="협업 제안 빠른 상담 이동">
+      <i data-lucide="message-square"></i>
+      <span class="floating-text">협업 문의</span>
+      <span class="pulse-dot" aria-hidden="true"></span>
+    </a>
+  </aside>
+
+  <!-- Mobile Bottom Navigation Bar (Fixed at screen bottom on Mobile) -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="모바일 하단 네비게이션">
+    <a href="#hero" class="tab-item active" data-tab="hero" aria-label="홈 이동">
+      <i data-lucide="home"></i>
+      <span class="tab-label">홈</span>
+    </a>
+    <a href="#curation" class="tab-item" data-tab="curation" aria-label="큐레이션 이동">
+      <i data-lucide="book-open"></i>
+      <span class="tab-label">큐레이션</span>
+    </a>
+    <a href="#universe" class="tab-item" data-tab="universe" aria-label="유니버스 이동">
+      <i data-lucide="sparkles"></i>
+      <span class="tab-label">유니버스</span>
+    </a>
+    <a href="#process" class="tab-item" data-tab="process" aria-label="프로세스 이동">
+      <i data-lucide="check-circle"></i>
+      <span class="tab-label">프로세스</span>
+    </a>
+    <a href="#contact" class="tab-item" data-tab="contact" aria-label="협업문의 이동">
+      <i data-lucide="send"></i>
+      <span class="tab-label">협업문의</span>
+    </a>
+  </nav>
+
+  <!-- Modal Component (For Book AI Visual Review Preview & Form Success) -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="닫기">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected dynamically via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <i data-lucide="book-open"></i> 루미의 서재
+        </div>
+        <p class="footer-copy">
+          Naver Book Influencer Official Portfolio.<br>
+          © 2026 Rumi's Book Library. All rights reserved.
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-group">
+          <strong>채널 연결</strong>
+          <a href="https://blog.naver.com" target="_blank" rel="noopener"><i data-lucide="external-link"></i> 네이버 공식 블로그</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener"><i data-lucide="camera"></i> 인스타그램 숏폼</a>
+        </div>
+        <div class="footer-group">
+          <strong>문의 사항</strong>
+          <span>rumi_books@naver.com</span>
+          <span>카카오톡 @루미의서재</span>
+        </div>
+        <div class="footer-group">
+          <strong>관리</strong>
+          <a href="admin.html"><i data-lucide="settings"></i> Admin</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="data.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

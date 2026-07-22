@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>루미의 서재 - Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="admin-body">
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Login View -->
+  <div class="login-container" id="loginView">
+    <div class="login-card">
+      <div class="admin-logo" style="justify-content: center; margin-bottom: 1rem;">
+        <i data-lucide="shield"></i> Admin Portal
+      </div>
+      <h2>관리자 로그인</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="adminEmail">이메일</label>
+          <input type="email" id="adminEmail" class="form-control" required placeholder="관리자 이메일">
+        </div>
+        <div class="form-group">
+          <label for="adminPassword">비밀번호</label>
+          <input type="password" id="adminPassword" class="form-control" required placeholder="비밀번호를 입력하세요">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full-span">로그인</button>
+      </form>
+      <div style="margin-top: 1rem;">
+        <a href="index.html" style="font-size: 0.9rem; color: var(--text-secondary); text-decoration: underline;">홈으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard View -->
+  <div class="admin-layout" id="dashboardView">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <i data-lucide="book-open"></i> 루미의 서재 Admin
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-link active" data-target="panelHero"><i data-lucide="layout-template"></i> 메인 히어로 관리</div>
+        <div class="admin-nav-link" data-target="panelMetrics"><i data-lucide="bar-chart-2"></i> 지표 관리</div>
+        <div class="admin-nav-link" data-target="panelBooks"><i data-lucide="library"></i> 도서 큐레이션 관리</div>
+        <div class="admin-nav-link" data-target="panelInquiries"><i data-lucide="inbox"></i> 문의 내역 확인</div>
+        <div class="admin-nav-link" id="logoutBtn" style="margin-top: 2rem; color: var(--color-danger);"><i data-lucide="log-out"></i> 로그아웃</div>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1 id="panelTitle">메인 히어로 관리</h1>
+        <a href="index.html" class="btn btn-secondary btn-sm" target="_blank"><i data-lucide="external-link"></i> 사이트 보기</a>
+      </div>
+
+      <!-- Hero Panel -->
+      <section class="admin-panel active" id="panelHero">
+        <form id="heroForm">
+          <div class="form-group">
+            <label for="heroTitleInput">메인 타이틀 (HTML 허용, &lt;br&gt; 등)</label>
+            <input type="text" id="heroTitleInput" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="heroSubtitleInput">서브 타이틀</label>
+            <textarea id="heroSubtitleInput" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">저장</button>
+            <button type="button" class="btn btn-secondary" onclick="loadHeroData()">취소</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Metrics Panel -->
+      <section class="admin-panel" id="panelMetrics">
+        <form id="metricsForm">
+          <div class="form-group">
+            <label for="metricReviewsInput">누적 리뷰 도서 수</label>
+            <input type="number" id="metricReviewsInput" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="metricFollowersInput">월간 블로그 도달 수 (K 단위)</label>
+            <input type="number" id="metricFollowersInput" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="metricCollabsInput">출판사 재협업률 (%)</label>
+            <input type="number" id="metricCollabsInput" class="form-control">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">저장</button>
+            <button type="button" class="btn btn-secondary" onclick="loadMetricsData()">취소</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Books Panel -->
+      <section class="admin-panel" id="panelBooks">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+          <button class="btn btn-primary btn-sm" id="addBookBtn"><i data-lucide="plus"></i> 새 도서 등록</button>
+        </div>
+        <div id="bookListContainer" class="book-list">
+          <!-- Book list dynamically injected here -->
+        </div>
+
+        <!-- Edit Book Form (Hidden by default) -->
+        <div id="bookEditContainer" style="display: none; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+          <h3 id="bookFormTitle">도서 수정</h3>
+          <form id="bookForm">
+            <input type="hidden" id="bookIdInput">
+            <div class="form-group">
+              <label for="bookImageInput">표지 이미지 (업로드 시 자동 변경)</label>
+              <input type="file" id="bookImageInput" class="form-control" accept="image/*">
+              <div id="bookImagePreview" style="margin-top: 0.5rem;"></div>
+            </div>
+            <div class="form-group">
+              <label for="bookTitleInput">도서명</label>
+              <input type="text" id="bookTitleInput" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="bookAuthorInput">저자 및 출판사</label>
+              <input type="text" id="bookAuthorInput" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="bookGenreInput">장르 태그</label>
+              <input type="text" id="bookGenreInput" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="bookRatingInput">평점</label>
+              <input type="text" id="bookRatingInput" class="form-control" placeholder="예: 4.9 / 5.0" required>
+            </div>
+            <div class="form-group">
+              <label for="bookQuoteInput">캐릭터 명대사</label>
+              <textarea id="bookQuoteInput" class="form-control" rows="2" required></textarea>
+            </div>
+            <div class="form-actions" style="justify-content: space-between;">
+              <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-primary" id="saveBookBtn" disabled>저장 (이미지 업로드 중...)</button>
+                <button type="button" class="btn btn-secondary" id="cancelBookEditBtn">취소</button>
+              </div>
+              <button type="button" class="btn btn-danger" id="deleteBookBtn" style="background-color: var(--color-danger); color: white; border-color: var(--color-danger); display: none;">삭제</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Inquiries Panel -->
+      <section class="admin-panel" id="panelInquiries">
+        <div id="inquiriesListContainer" class="book-list">
+          <!-- Inquiries dynamically injected here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="data.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
