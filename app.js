@@ -404,6 +404,19 @@ function initContactForm() {
   const publisherName = document.getElementById('publisherName');
   const userEmail = document.getElementById('userEmail');
   const proposalDetail = document.getElementById('proposalDetail');
+  
+  const privacyConsent = document.getElementById('privacyConsent');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if (privacyConsent && submitBtn) {
+    // Initial state check
+    submitBtn.disabled = !privacyConsent.checked;
+
+    // Real-time listener
+    privacyConsent.addEventListener('change', () => {
+      submitBtn.disabled = !privacyConsent.checked;
+    });
+  }
 
   // Real-time Input Listeners
   [userName, publisherName, userEmail, proposalDetail].forEach(input => {

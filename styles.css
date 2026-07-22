@@ -272,6 +272,14 @@ button {
   transform: translateY(-2px);
 }
 
+.btn-primary:disabled {
+  background-color: var(--border-color);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 .btn-secondary {
   background-color: var(--bg-card);
   color: var(--text-primary);
